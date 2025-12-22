@@ -2,5 +2,10 @@
 
 ## Dec 21 
 - [✔] learn about ORM sqlmodel
-- [ ] create a simple table and manipulate the database using fastapi and  sqlmodel
+- [✔] create a simple table and manipulate the database using fastapi and  sqlmodel
 - [ ] create sql models for backend of the project
+
+## Dec 23
+- [ ] create sql models for backend of the project
+- [ ] finalize the database schema
+- [ ] start implementing the backend logic
