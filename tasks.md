@@ -7,4 +7,5 @@
 
 ## Dec 23
 - [✔] learn about authentication and authorization in fastapi
-- [] create a simple auth system example using fastapi and sqlmodel
+- [] understand password hashing and storing securely
+- [] implement hashing mechanism in sample project
