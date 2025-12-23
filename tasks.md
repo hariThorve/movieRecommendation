@@ -6,6 +6,5 @@
 - [ ] create sql models for backend of the project
 
 ## Dec 23
-- [ ] create sql models for backend of the project
-- [ ] finalize the database schema
-- [ ] start implementing the backend logic
+- [✔] learn about authentication and authorization in fastapi
+- [] create a simple auth system example using fastapi and sqlmodel
