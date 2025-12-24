@@ -7,5 +7,10 @@
 
 ## Dec 23
 - [✔] learn about authentication and authorization in fastapi
-- [] understand password hashing and storing securely
-- [] implement hashing mechanism in sample project
+- [✔] understand password hashing and storing securely
+- [✔] implement hashing mechanism in sample project
+
+## Dec 24
+- [] create a secure user registration and login system using fastapi
+- [] implement JWT token-based authentication for API endpoints
+- [] test the authentication system thoroughly
