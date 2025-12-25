@@ -11,6 +11,6 @@
 - [✔] implement hashing mechanism in sample project
 
 ## Dec 24
-- [] create a secure user registration and login system using fastapi
-- [] implement JWT token-based authentication for API endpoints
-- [] test the authentication system thoroughly
+- [❌] create a secure user registration and login system using fastapi
+- [❌] implement JWT token-based authentication for API endpoints
+- [❌] test the authentication system thoroughly
