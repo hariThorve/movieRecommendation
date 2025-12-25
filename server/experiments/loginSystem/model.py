@@ -1,5 +1,5 @@
 import os
-from typing import Annotated
+from typing import Annotated, Optional
 from fastapi import Depends
 from dotenv import load_dotenv
 from sqlmodel import SQLModel, Field, Session, create_engine
@@ -9,8 +9,9 @@ load_dotenv()
 mysqlUrl = os.getenv("MYSQL_URL")
 
 class Student(SQLModel, table=True):
-    id : int | None= Field(default=None, primary_key=True)
+    id : int | None = Field(default=None, primary_key=True)
     name : str 
+    email : str = Field(unique=True)
     password : str
 
 engine = create_engine(mysqlUrl)
