@@ -26,6 +26,6 @@ def login(student: Student, session: sessionDependency) -> Student:
     statement = select(Student).where(Student.email == student.email)
     stud = session.exec(statement=statement).first()
     if stud:
-        return {"name": stud.name, "email": stud.email}
+        return {"id":stud.id, "name": stud.name, "email": stud.email}
     else:
         return {"error": "no user found"}
