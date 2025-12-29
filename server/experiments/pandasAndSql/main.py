@@ -38,7 +38,12 @@ except requests.exceptions.RequestException as e:
 
 soup = BeautifulSoup(html_content, "html.parser")
 ul = soup.find("ul", class_="ipc-metadata-list ipc-metadata-list--dividers-between sc-d24d5d37-0 hDHQeM detailed-list-view ipc-metadata-list--base")
-for li in ul.find_all("li"):
+for li in ul.find_all("li", class_="ipc-metadata-list-summary-item"):
     div = li.find("div", class_="sc-b4f120f6-0 bQhtuJ")
     text = div.find("h3").get_text()
-    print(text)
+    try:
+        ratings = div.find("span", class_="ipc-rating-star--rating").get_text()
+    except:
+        print(None)
+    # ratings = div.find("span", class_="ipc-rating-star--rating").get_text()
+    print(f"Movie Name: {text}, ratings: {ratings}")
