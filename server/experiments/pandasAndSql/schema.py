@@ -22,5 +22,5 @@ def getSessions():
     with Session(engine) as session:
         yield session
 
-sessionDependency = Annotated[Session, getSessions()]
+sessionDependency = Annotated[Session, Depends(getSessions)]
     
