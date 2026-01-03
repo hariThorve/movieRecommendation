@@ -76,7 +76,7 @@ for i in range(1, 11):
     soup = BeautifulSoup(html_content, "html_parser")
     div = soup.find("div", class_="ipc-chip-list__scroller")
     hyperlink = div.find_all("a", class_="ipc-chip ipc-chip--on-baseAlt")
-    print(hyperlinks)
+    print(hyperlink)
     genreList = [text for text in hyperlink.find_all("span", class_="ipc-chip__text").text]
     print(genreList)
     genre.append(genreList)
