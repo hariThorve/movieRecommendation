@@ -64,7 +64,8 @@ def name_ratings_votecount(headers):
 genre = []
 for i in range(1, 11):
     try:
-
+        url = "https://www.imdb.com/title/tt16431404/?ref_=sr_t_" + str(i)
+        print(url)
         response = requests.get("https://www.imdb.com/title/tt16431404/?ref_=sr_t_" + str(i), headers=headers)
         print(response)
         response.raise_for_status() # Check for bad status codes
@@ -73,17 +74,11 @@ for i in range(1, 11):
         print(f"Error fetching the URL: {e}")
         exit()
 
-    soup = BeautifulSoup(html_content, "html_parser")
+    soup = BeautifulSoup(html_content, "lxml")
     div = soup.find("div", class_="ipc-chip-list__scroller")
-    hyperlink = div.find_all("a", class_="ipc-chip ipc-chip--on-baseAlt")
-    print(hyperlink)
-    genreList = [text for text in hyperlink.find_all("span", class_="ipc-chip__text").text]
-    print(genreList)
-    genre.append(genreList)
-    
-    # return genre
+    text = div.find_all("span", class_="ipc-chip__text")
+    print(text[1].get_text())
 
-print(genre)
         
 
 
