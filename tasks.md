@@ -14,3 +14,7 @@
 - [❌] create a secure user registration and login system using fastapi
 - [❌] implement JWT token-based authentication for API endpoints
 - [❌] test the authentication system thoroughly
+
+# Jan 6
+
+- [] understand the extractor logic prperly to fetch proper movie data with genre from the imdb website
