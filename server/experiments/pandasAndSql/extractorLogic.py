@@ -38,6 +38,8 @@ def name_ratings_votecount(headers):
         print(f"Error fetching the URL: {e}")
     exit()
 
+    url = "https://www.imdb.com"
+
     soup = BeautifulSoup(html_content, "html.parser")
     ul = soup.find("ul", class_="ipc-metadata-list ipc-metadata-list--dividers-between sc-d24d5d37-0 hDHQeM detailed-list-view ipc-metadata-list--base")
 
@@ -46,13 +48,25 @@ def name_ratings_votecount(headers):
     for li in ul.find_all("li", class_="ipc-metadata-list-summary-item"):
         div = li.find("div", class_="sc-b4f120f6-0 bQhtuJ")
         movie_name = div.find("h3").get_text()
+        movie_url = div.find("a", class_="ipc-title-link-wrapper", href=True)
+
         try:
             ratings = div.find("span", class_="ipc-rating-star--rating").get_text()
             vote_counts = div.find("span", class_="ipc-rating-star--voteCount").get_text()
+
+            movie_genre_page = url + movie_url
+
+            genre_extractor = requests.get(movie_genre_page, headers=headers)
+            genre_extractor.raise_for_status() # Check for bad status codes
+            genre_html_content = response.content
+
+            genre_soup = BeautifulSoup(genre_html_content, "lxl")
+            genre_div = genre_soup.find("div", class_="ipc-chip-list__scroller")
+            text = genre_div.find_all("span", class_="ipc-chip__text")
             movies_details.append({
                 "name" : movie_name,
                 "movie_ratings": ratings,
-                "movie_genre" : [],
+                "movie_genre" : [].append(text),
                 "vote_counts" : vote_counts
             })
             
@@ -61,23 +75,25 @@ def name_ratings_votecount(headers):
     return movies_details 
 
 # def find_genres(headers):
-genre = []
-for i in range(1, 11):
-    try:
-        url = "https://www.imdb.com/title/tt16431404/?ref_=sr_t_" + str(i)
-        print(url)
-        response = requests.get("https://www.imdb.com/title/tt16431404/?ref_=sr_t_" + str(i), headers=headers)
-        print(response)
-        response.raise_for_status() # Check for bad status codes
-        html_content = response.content
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching the URL: {e}")
-        exit()
+# genre = []
+# for i in range(1, 11):
+#     try:
+#         url = "https://www.imdb.com/title/tt16431404/?ref_=sr_t_" + str(i)
+#         print(url)
+#         response = requests.get("https://www.imdb.com/title/tt16431404/?ref_=sr_t_" + str(i), headers=headers)
+#         print(response)
+#         response.raise_for_status() # Check for bad status codes
+#         html_content = response.content
+#     except requests.exceptions.RequestException as e:
+#         print(f"Error fetching the URL: {e}")
+#         exit()
 
-    soup = BeautifulSoup(html_content, "lxml")
-    div = soup.find("div", class_="ipc-chip-list__scroller")
-    text = div.find_all("span", class_="ipc-chip__text")
-    print(text[1].get_text())
+#     soup = BeautifulSoup(html_content, "lxml")
+#     div = soup.find("div", class_="ipc-chip-list__scroller")
+#     text = div.find_all("span", class_="ipc-chip__text")
+#     print(text[1].get_text())
+
+print(name_ratings_votecount(headers=headers))
 
         
 
